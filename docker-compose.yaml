@@ -1,0 +1,26 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    image: express-backend
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+  frontend:
+    depends_on:
+      - backend
+    build:
+      context: ./frontend
+    image: react-frontend
+    ports:
+      - "80:5173"
+    environment:
+      - VITE_API_URL=http://backend:3000  # Aggiunge l'URL del backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,266 @@
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+body {
+  /* 3. Add accessible line-height */
+  line-height: 1.5;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  background-color: #ffffff;  /* Aggiungo sfondo bianco */
+}
+
+/* 5. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  9. Create a root stacking context
+*/
+
+#root, #__next {
+  isolation: isolate;
+}
+
+#root {
+  margin: 0 auto;
+}
+
+label {
+  font-weight: 500;
+  color: #333;  /* Colore testo scuro per le label */
+}
+
+h2 {
+  text-align: center;
+  color: black;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group input {
+  width: 100%; 
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.2s;
+  background-color: #ffffff;  /* Aggiungo sfondo bianco agli input */
+  color: #333;  /* Colore testo scuro per gli input */
+}
+
+.error-message{
+  margin-bottom: 10px;
+  color: red;
+  font-weight: bold;
+}
+
+.login-container {
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;  /* Aggiungo sfondo bianco al container */
+}
+
+button[type="submit"] {
+  background-color: #2f67e0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button-group {
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+}
+
+.register-button {
+  background-color: rgb(242, 49, 49);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.register-button:hover {
+  background-color: red;
+}
+
+.user-info-container {
+  text-align: center;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.user-info-container h1 {
+  color: #2f67e0;
+  margin-bottom: 20px;
+}
+
+.user-details {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h4 {
+  padding: 15px 0px 0px 0px ;
+  color: red;
+}
+
+.button-group-user {
+  display: flex;
+  gap: 250px;
+  margin: 30px 5px 5px 5px;
+
+}
+
+.register-container {
+  min-height: 100vh;
+  width: 150%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.register-form-container {
+  max-width: 800px;
+  width: 100%;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.register-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 2rem;
+}
+
+.register-message {
+  background-color: #e3f2fd;
+  border: 1px solid #2196f3;
+  padding: 12px 0px 12px 0px;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field label {
+  font-weight: 500;
+  color: #666;
+}
+
+.form-field input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.2s;
+  background-color: white;
+}
+
+.form-field input:focus {
+  border-color: #2f67e0;
+}
+
+.register-submit-btn {
+  background-color: #2f67e0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.register-submit-btn:hover {
+  background-color: #1c54d8;
+}
+
+.register-submit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.back-to-login-btn {
+  background-color: rgb(242, 49, 49);
+  color: white;
+  font-weight: 500;
+  border: none;
+}
+
+.back-to-login-btn:hover {
+  background-color: red;
+}
+
+.delete-button {
+  /* margin-top: 5px; */
+  background-color: red;
+  /* margin-left: 10px; */
+}
+
+.btn-exit {
+  /* margin-top: 5px; */
+  background-color: rgb(1, 184, 1);
+  /* margin-right: 10px; */
+}
