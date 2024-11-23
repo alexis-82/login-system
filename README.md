@@ -162,9 +162,14 @@ I file di build possono essere trovati nella directory `frontend/dist`.
 ```bash
 npx serve -s dist -l 5173
 ```
-
 ## 🤝 Contributing
 Le pull request sono benvenute. Per modifiche importanti, apri prima un issue per discutere cosa vorresti cambiare.
 
 ## 📝 License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+---
+## :camera: Screenshot
+[![login.png](https://i.postimg.cc/R0sMSP4B/login.png)](https://postimg.cc/zLhmpFyt)
+
+[![register.png](https://i.postimg.cc/HnJ1kH30/register.png)](https://postimg.cc/PvkRSggN)
