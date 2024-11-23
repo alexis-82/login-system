@@ -59,7 +59,7 @@ label {
 
 h2 {
   text-align: center;
-  color: black;
+  color: #000;
 }
 
 .form-group {
@@ -179,12 +179,13 @@ h4 {
   text-align: center;
   font-size: 24px;
   font-weight: bold;
-  color: black;
+  color: #333;
   margin-bottom: 2rem;
 }
 
 .register-message {
   background-color: #e3f2fd;
+  color: black;
   border: 1px solid #2196f3;
   padding: 12px 0px 12px 0px;
   border-radius: 4px;
@@ -215,6 +216,7 @@ h4 {
   font-size: 16px;
   transition: border-color 0.2s;
   background-color: white;
+  color: black;
 }
 
 .form-field input:focus {
