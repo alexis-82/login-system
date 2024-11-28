@@ -10,21 +10,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Route pubbliche */}
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-
-        {/* Route protette */}
-        <Route
-          path="/api/users/:username"
-          element={
-            <ProtectedRoute>
-              <UserInfo />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/api/users"
+        <Route 
+          path="/" 
           element={
             <ProtectedRoute>
               <UserInfo />
@@ -32,7 +19,16 @@ function App() {
           }
         />
 
-        {/* Route non trovata */}
+        <Route 
+          path="/login" 
+          element={<Login />}
+        />
+
+        <Route 
+          path="/register" 
+          element={<Register />}
+        />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

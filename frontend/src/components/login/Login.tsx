@@ -1,50 +1,42 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-// FORM
 interface LoginForm {
     username: string;
     password: string;
 }
 
-// LOGIN
 const Login = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState<LoginForm>({
         username: '',
         password: ''
     });
-
-    // ERRORS
     const [error, setError] = useState<string>('');
 
-    // Controlla se l'utente ha già effettuato l'accesso durante il montaggio del componente
+    // controlla solo se l'utente è già autenticato
     useEffect(() => {
         const token = localStorage.getItem('token');
-        const username = localStorage.getItem('username');
-        if (token && username) {
-            navigate(`/api/users/${username}`);
+        if (token) {
+            navigate('/', { replace: true });
         }
-    }, []); // L'array di dipendenze vuoto garantisce che venga eseguito solo una volta al momento del montaggio
+    }, []);
 
-    // ONCHANGE
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    // SUBMIT
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        // validazione dei campi
         if (!formData.username || !formData.password) {
             setError('Inserire Username e Password');
             return;
         }
 
         try {
-            const response = await fetch('http://localhost:3000/api/users', {
+            const response = await fetch('http://localhost:3000/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -52,45 +44,28 @@ const Login = () => {
                 body: JSON.stringify(formData)
             });
 
-            const data = await response.json()
+            const data = await response.json();
 
-            if (data.success) {
-                // Salvataggio token in localStorage
-                if (data.token) {
-                    localStorage.setItem('token', data.token);
-                    localStorage.setItem('username', data.username);
-                        
-                        // // Opzionale: salva la data di login
-                        // localStorage.setItem('loginDate', new Date().toISOString());
-                        
-                        // // Opzionale: imposta la scadenza del token (24 ore)
-                        // const expirationDate = new Date();
-                        // expirationDate.setHours(expirationDate.getHours() + 24);
-                        // localStorage.setItem('tokenExpiration', expirationDate.toISOString());
-                        
-                        // dopo il login, vado alla pagina dell'utente
-                    
-                    // dopo il login, vado alla pagina dell'utente
-                    navigate(`/api/users/${data.username}`);
-                } else {
-                    setError('Token non ricevuto dal server');
-                }
+            if (!response.ok) {
+                setError(data.message || 'Errore durante il login');
+                return;
+            }
+
+            if (data.token) {
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('username', formData.username);
+                navigate('/', { replace: true });
             } else {
-                setError(data.message);
+                setError('Token non ricevuto dal server');
             }
         } catch (error) {
-            setError('Errore durante il login');
+            setError('Errore di connessione al server');
             console.error('Login error:', error);
         }
     };
 
-    // REGISTRATION
     const handleRegistration = () => {
-        try {
-            navigate('/register');
-        } catch (error) {
-            console.error('Errore durante il reindirizzamento:', error);
-        }
+        navigate('/register');
     };
 
     return (
@@ -105,6 +80,7 @@ const Login = () => {
                         name="username"
                         value={formData.username}
                         onChange={handleChange}
+                        placeholder="Inserisci username"
                     />
                 </div>
 
@@ -116,6 +92,7 @@ const Login = () => {
                         name="password"
                         value={formData.password}
                         onChange={handleChange}
+                        placeholder="Inserisci password"
                     />
                 </div>
 

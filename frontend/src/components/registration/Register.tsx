@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import '../../App.css'
 import { useNavigate } from "react-router-dom"
 
@@ -24,6 +24,15 @@ const Register = () => {
     })
     const [message, setMessage] = useState<string>('')
 
+    useEffect(() => {
+        // Controlla se l'utente è già autenticato
+        const token = localStorage.getItem('token');
+        if (token) {
+            // Se l'utente è già loggato, reindirizza alla dashboard
+            navigate('/', { replace: true });
+        }
+    }, [navigate]);
+
     // ONCHANGE
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
@@ -32,7 +41,7 @@ const Register = () => {
 
     // SUBMIT
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+        e.preventDefault();
 
         // validazione dei campi
         if (!formData.email || !formData.username || !formData.password || !formData.address || !formData.city) {
@@ -48,11 +57,24 @@ const Register = () => {
 
         // registrazione dell'utente
         try {
-            await axios.post('http://localhost:3000/register', formData)
-            setMessage('Registrazione completata con successo')
-            setFormData({ email: '', username: '', password: '', address: '', city: '' })
+            const response = await axios.post('http://localhost:3000/api/auth/register', formData);
+            
+            if (response.data.message) {
+                setMessage('Registrazione completata con successo');
+                setFormData({ email: '', username: '', password: '', address: '', city: '' });
+                
+                // Opzionale: reindirizza alla pagina di login dopo qualche secondo
+                // setTimeout(() => {
+                //     navigate('/login');
+                // }, 2000);
+            }
         } catch (error) {
-            setMessage('Username già esistente')
+            if (axios.isAxiosError(error) && error.response) {
+                setMessage(error.response.data.message || 'Errore durante la registrazione');
+            } else {
+                setMessage('Errore di connessione al server');
+            }
+            console.error('Errore registrazione:', error);
         }
     }
 

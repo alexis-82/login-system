@@ -13,7 +13,6 @@ body {
   line-height: 1.5;
   /* 4. Improve text rendering */
   -webkit-font-smoothing: antialiased;
-  background-color: #ffffff;  /* Aggiungo sfondo bianco */
 }
 
 /* 5. Improve media defaults */
@@ -54,12 +53,11 @@ h1, h2, h3, h4, h5, h6 {
 
 label {
   font-weight: 500;
-  color: #333;  /* Colore testo scuro per le label */
+  color: #666;
 }
 
 h2 {
   text-align: center;
-  color: #000;
 }
 
 .form-group {
@@ -73,8 +71,6 @@ h2 {
   border-radius: 4px;
   font-size: 16px;
   transition: border-color 0.2s;
-  background-color: #ffffff;  /* Aggiungo sfondo bianco agli input */
-  color: #333;  /* Colore testo scuro per gli input */
 }
 
 .error-message{
@@ -87,7 +83,6 @@ h2 {
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;  /* Aggiungo sfondo bianco al container */
 }
 
 button[type="submit"] {
@@ -100,6 +95,10 @@ button[type="submit"] {
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #1c54d8;
 }
 
 .button-group {
@@ -163,7 +162,6 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .register-form-container {
@@ -185,7 +183,6 @@ h4 {
 
 .register-message {
   background-color: #e3f2fd;
-  color: black;
   border: 1px solid #2196f3;
   padding: 12px 0px 12px 0px;
   border-radius: 4px;
@@ -215,8 +212,6 @@ h4 {
   border-radius: 4px;
   font-size: 16px;
   transition: border-color 0.2s;
-  background-color: white;
-  color: black;
 }
 
 .form-field input:focus {
@@ -262,6 +257,7 @@ h4 {
 }
 
 .btn-exit {
+  padding: 0 50px 0 50px;
   /* margin-top: 5px; */
   background-color: rgb(1, 184, 1);
   /* margin-right: 10px; */
