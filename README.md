@@ -58,7 +58,7 @@ docker-compose up --build
 
 ### DevOps
 - Containerizzazione completa dell'applicazione
-- Configuration as code con Docker Compose
+- Configurazione come code con Docker Compose
 - Port mapping configurabile
 
 ### Architettura
